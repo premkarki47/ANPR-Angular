@@ -1,0 +1,36 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
+            <h1>ANPR SYSTEM</h1>
+            {{message}}
+                    <form  #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)" role="form">
+                <!-- <div class="form-content"> -->
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control input-underline input-lg"
+                        [(ngModel)]="model.username" #username="ngModel" id="uname" placeholder="Username">
+                    </div>
+                    <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" class="alert alert-danger">
+                        <div [hidden]="!username.errors.required">
+                        Username is required
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password"  name="password" class="form-control input-underline input-lg"
+                        [(ngModel)]="model.password" #username="ngModel" placeholder="Password">
+                    </div>
+                    <div *ngIf="!passwd?.valid && (passwd?.dirty ||passwd?.touched)" class="alert alert-danger">
+                        <div [hidden]="!passwd.errors.required">
+                      Password is needed to be provided
+                        </div>
+                    </div>
+                <!-- </div> -->
+                <button class="btn rounded-btn" type="submit" [disabled]="!signInForm.form.valid">Log In</button>
+                <!-- <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a> -->
+                &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/passwordrest']">forget Password?</a>
+            </form>
+        </div>
+    </div>
+</div>
